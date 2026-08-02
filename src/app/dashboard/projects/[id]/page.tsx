@@ -682,14 +682,14 @@ export default function ProjectDeepDive() {
                 <text x={230 + 1 * 20} y={255} fill="#aaa" fontSize="7" textAnchor="middle">GND</text>
                 
                 <text x={230 + 1 * 20} y={320} fill="#aaa" fontSize="7" textAnchor="middle">GND</text>
-                <text x={230 + 5 * 20} y={320} fill="#aaa" fontSize="7" textAnchor="middle">RX2</text>
-                <text x={230 + 6 * 20} y={320} fill="#aaa" fontSize="7" textAnchor="middle">TX2</text>
-                <text x={230 + 7 * 20} y={320} fill="#aaa" fontSize="7" textAnchor="middle">CS</text>
-                <text x={230 + 8 * 20} y={320} fill="#aaa" fontSize="7" textAnchor="middle">SCK</text>
-                <text x={230 + 9 * 20} y={320} fill="#aaa" fontSize="7" textAnchor="middle">MISO</text>
-                <text x={230 + 10 * 20} y={320} fill="#aaa" fontSize="7" textAnchor="middle">SDA</text>
-                <text x={230 + 13 * 20} y={320} fill="#aaa" fontSize="7" textAnchor="middle">SCL</text>
-                <text x={230 + 14 * 20} y={320} fill="#aaa" fontSize="7" textAnchor="middle">MOSI</text>
+                <text x={230 + 5 * 20} y={320} fill="#aaa" fontSize="7" textAnchor="middle">16</text>
+                <text x={230 + 6 * 20} y={320} fill="#aaa" fontSize="7" textAnchor="middle">17</text>
+                <text x={230 + 7 * 20} y={320} fill="#aaa" fontSize="7" textAnchor="middle">5</text>
+                <text x={230 + 8 * 20} y={320} fill="#aaa" fontSize="7" textAnchor="middle">18</text>
+                <text x={230 + 9 * 20} y={320} fill="#aaa" fontSize="7" textAnchor="middle">19</text>
+                <text x={230 + 10 * 20} y={320} fill="#aaa" fontSize="7" textAnchor="middle">21</text>
+                <text x={230 + 13 * 20} y={320} fill="#aaa" fontSize="7" textAnchor="middle">22</text>
+                <text x={230 + 14 * 20} y={320} fill="#aaa" fontSize="7" textAnchor="middle">23</text>
 
                 {/* PureThermal 3 */}
                 {/* Placed at Col 30 to 37. Pins in Row A (180). Body hangs UP off the board */}
@@ -799,12 +799,12 @@ export default function ProjectDeepDive() {
 
                 {/* --- COMPONENT LEGEND --- */}
                 <g transform="translate(680, 480)">
-                  <rect x="0" y="0" width="300" height="110" rx="8" fill="rgba(0,0,0,0.85)" stroke="#444" strokeWidth="1" />
+                  <rect x="0" y="0" width="300" height="125" rx="8" fill="rgba(0,0,0,0.85)" stroke="#444" strokeWidth="1" />
                   <text x="15" y="22" fill="var(--cyan)" fontSize="11" fontFamily="var(--font-display)">COMPONENT LEGEND</text>
                   
                   {/* Components */}
                   <text x="15" y="42" fill="var(--white)" fontSize="11" fontWeight="bold">U1:</text>
-                  <text x="35" y="42" fill="#ccc" fontSize="11">ESP32-WROOM-32D (Microcontroller)</text>
+                  <text x="35" y="42" fill="#ccc" fontSize="11">ESP32-WROOM-32D (16=RX, 17=TX, 21=SDA, 22=SCL)</text>
 
                   <text x="15" y="57" fill="var(--white)" fontSize="11" fontWeight="bold">U2:</text>
                   <text x="35" y="57" fill="#ccc" fontSize="11">PureThermal 3 / FLIR Lepton 3.5</text>
