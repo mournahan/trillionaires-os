@@ -37,111 +37,217 @@ export default function ToothPolishReview() {
     }
   };
 
-  if (submitted) {
-    return (
-      <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-6 font-sans">
-        <div className="max-w-md w-full text-center border border-yellow-600 p-10 bg-zinc-950 rounded shadow-2xl">
-          <h1 className="text-3xl font-serif text-yellow-500 mb-4 uppercase tracking-widest">Thank You</h1>
-          <p className="text-zinc-300 font-light leading-relaxed">
-            Your feedback is invaluable. Welcome to the Trillionaires inner circle.
+  return (
+    <div style={{ 
+      minHeight: '100vh',
+      backgroundColor: '#050505', 
+      backgroundImage: 'radial-gradient(1200px 800px at 50% -10%, rgba(212, 175, 55, 0.05), transparent 60%)',
+      color: '#f2f2f2', 
+      fontFamily: '"Jost", "Segoe UI", sans-serif',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '4rem 2rem'
+    }}>
+      
+      {/* Import Eternal Bliss Fonts */}
+      <style dangerouslySetInnerHTML={{__html: `
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&family=Marcellus&display=swap');
+        
+        .eb-eyebrow {
+          font-family: "Marcellus", Georgia, serif;
+          font-size: 0.75rem;
+          letter-spacing: 0.42em;
+          text-transform: uppercase;
+          color: #d4af37;
+          margin-bottom: 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .eb-h1 {
+          font-family: "Cormorant Garamond", Georgia, serif;
+          font-weight: 400;
+          font-size: clamp(2rem, 5vw, 3rem);
+          line-height: 1.15;
+          letter-spacing: 0.01em;
+          margin: 0 0 0.5rem;
+          text-align: center;
+        }
+        .eb-h1 em {
+          font-style: italic;
+          color: #d4af37;
+        }
+        
+        .eb-btn {
+          display: inline-block;
+          width: 100%;
+          font-family: "Marcellus", Georgia, serif;
+          font-size: 0.8rem;
+          letter-spacing: 0.32em;
+          text-indent: 0.32em;
+          text-transform: uppercase;
+          color: #0a0a0a;
+          background: #d4af37;
+          border: 1px solid #d4af37;
+          padding: 1.05rem 2.6rem;
+          text-decoration: none;
+          cursor: pointer;
+          transition: background 0.35s, color 0.35s, box-shadow 0.35s;
+          margin-top: 1rem;
+        }
+        .eb-btn:hover:not(:disabled) {
+          background: transparent;
+          color: #d4af37;
+          box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
+        }
+        .eb-btn:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+
+        .eb-input, .eb-textarea {
+          width: 100%;
+          background: rgba(0,0,0,0.4);
+          border: 1px solid rgba(255, 255, 255, 0.14);
+          padding: 1rem 1.5rem;
+          color: #fff;
+          font-family: "Jost", sans-serif;
+          font-size: 1rem;
+          transition: border-color 0.35s;
+          margin-bottom: 1.5rem;
+        }
+        .eb-input:focus, .eb-textarea:focus {
+          outline: none;
+          border-color: #d4af37;
+        }
+        .eb-label {
+          display: block;
+          font-family: "Marcellus", serif;
+          font-size: 0.75rem;
+          letter-spacing: 0.2em;
+          color: #a3a3a3;
+          margin-bottom: 0.75rem;
+          text-transform: uppercase;
+        }
+
+        .eb-card {
+          background: #0a0a0a;
+          border: 1px solid rgba(212, 175, 55, 0.3);
+          padding: clamp(2rem, 5vw, 4rem);
+          width: 100%;
+          max-width: 650px;
+          position: relative;
+        }
+        .eb-card::before {
+          content: "";
+          position: absolute;
+          top: 0; left: 0; right: 0;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, #d4af37, transparent);
+          opacity: 0.8;
+        }
+      `}} />
+
+      {submitted ? (
+        <div className="eb-card" style={{textAlign: 'center', padding: '6rem 2rem'}}>
+          <p className="eb-eyebrow">Formulation Complete</p>
+          <h1 className="eb-h1">Thank You</h1>
+          <p style={{ color: '#a3a3a3', marginTop: '1.5rem', lineHeight: '1.8', fontSize: '1.1rem', fontWeight: 300 }}>
+            Your feedback is invaluable to perfecting this formula. <br/>
+            Welcome to the <em style={{color: '#d4af37', fontStyle: 'italic'}}>Trillionaires</em> inner circle.
           </p>
         </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-6 font-sans">
-      <div className="max-w-2xl w-full border border-yellow-600 p-8 md:p-12 bg-zinc-950 rounded shadow-2xl">
-        <div className="text-center mb-10">
-          <h1 className="text-3xl md:text-4xl font-serif text-yellow-500 mb-2 uppercase tracking-widest">Beta Review</h1>
-          <h2 className="text-xl md:text-2xl font-light text-zinc-300">Trillionaires Bespoke Tooth Polish</h2>
-        </div>
-
-        {error && (
-          <div className="bg-red-900/50 border border-red-500 text-red-200 px-4 py-3 rounded mb-6 text-sm text-center">
-            {error}
-          </div>
-        )}
-
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label className="block text-sm font-medium text-yellow-500 uppercase tracking-wider mb-2">Your Name</label>
-            <input
-              type="text"
-              required
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="w-full bg-black border border-zinc-700 rounded py-3 px-4 text-white focus:outline-none focus:border-yellow-500 transition-colors"
-              placeholder="e.g., John Doe"
-            />
+      ) : (
+        <div className="eb-card">
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <div style={{ color: '#d4af37', fontSize: '24px', marginBottom: '1rem' }}>✧</div>
+            <h1 className="eb-h1">Beta Feedback</h1>
+            <p style={{ fontFamily: '"Marcellus", serif', color: '#a3a3a3', letterSpacing: '0.15em', fontSize: '0.85rem' }}>TRILLIONAIRES BESPOKE TOOTH POLISH</p>
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-yellow-500 uppercase tracking-wider mb-2">Rating (1-5 Stars)</label>
-            <input
-              type="number"
-              min="1"
-              max="5"
-              required
-              value={rating}
-              onChange={(e) => setRating(Number(e.target.value))}
-              className="w-full bg-black border border-zinc-700 rounded py-3 px-4 text-white focus:outline-none focus:border-yellow-500 transition-colors"
-            />
-          </div>
+          {error && (
+            <div style={{ border: '1px solid #ff4444', color: '#ff4444', padding: '1rem', textAlign: 'center', marginBottom: '2rem', fontSize: '0.9rem' }}>
+              {error}
+            </div>
+          )}
 
-          <div>
-            <label className="block text-sm font-medium text-yellow-500 uppercase tracking-wider mb-2">Your Honest Thoughts</label>
-            <textarea
-              required
-              rows={5}
-              value={review}
-              onChange={(e) => setReview(e.target.value)}
-              className="w-full bg-black border border-zinc-700 rounded py-3 px-4 text-white focus:outline-none focus:border-yellow-500 transition-colors"
-              placeholder="How did it feel? Did you like the flavor? Notice any changes in your teeth?"
-            ></textarea>
-          </div>
-
-          <div className="flex items-center mt-4 mb-2">
-            <input
-              type="checkbox"
-              id="wouldBuy"
-              checked={wouldBuy}
-              onChange={(e) => setWouldBuy(e.target.checked)}
-              className="h-5 w-5 rounded border-zinc-700 bg-black text-yellow-500 focus:ring-yellow-500"
-            />
-            <label htmlFor="wouldBuy" className="ml-3 block text-sm font-medium text-zinc-300">
-              I would buy this if it were available in stores.
-            </label>
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-yellow-500 uppercase tracking-wider mb-2">How much would you pay for a 4oz jar?</label>
-            <div className="relative">
-              <span className="absolute inset-y-0 left-0 flex items-center pl-4 text-zinc-400">$</span>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label className="eb-label">Name</label>
               <input
-                type="number"
-                min="0"
-                step="0.01"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-                className="w-full bg-black border border-zinc-700 rounded py-3 pl-8 pr-4 text-white focus:outline-none focus:border-yellow-500 transition-colors"
-                placeholder="e.g., 25.00"
+                type="text"
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="eb-input"
+                placeholder="How should we address you?"
               />
             </div>
-          </div>
 
-          <div className="pt-4">
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-yellow-600 hover:bg-yellow-500 text-black font-bold uppercase tracking-widest py-4 px-4 rounded transition-colors duration-300 flex justify-center items-center"
-            >
-              {loading ? "Submitting..." : "Submit Review"}
+            <div>
+              <label className="eb-label">Experience Rating (1-5)</label>
+              <input
+                type="number"
+                min="1"
+                max="5"
+                required
+                value={rating}
+                onChange={(e) => setRating(Number(e.target.value))}
+                className="eb-input"
+              />
+            </div>
+
+            <div>
+              <label className="eb-label">Your Honest Thoughts</label>
+              <textarea
+                required
+                rows={5}
+                value={review}
+                onChange={(e) => setReview(e.target.value)}
+                className="eb-textarea"
+                placeholder="How did the ritual feel? Did you notice the lack of synthetic foam? Did the MCHA leave your teeth feeling polished?"
+              ></textarea>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '2rem' }}>
+              <input
+                type="checkbox"
+                id="wouldBuy"
+                checked={wouldBuy}
+                onChange={(e) => setWouldBuy(e.target.checked)}
+                style={{ width: '18px', height: '18px', accentColor: '#d4af37', marginRight: '1rem' }}
+              />
+              <label htmlFor="wouldBuy" style={{ color: '#f2f2f2', fontWeight: 300, fontSize: '0.95rem' }}>
+                I would purchase this formulation if available.
+              </label>
+            </div>
+
+            <div>
+              <label className="eb-label">Retail Value Estimation ($)</label>
+              <div style={{ position: 'relative' }}>
+                <span style={{ position: 'absolute', left: '1.5rem', top: '50%', transform: 'translateY(-50%)', color: '#a3a3a3', marginTop: '-0.75rem' }}>$</span>
+                <input
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                  className="eb-input"
+                  style={{ paddingLeft: '2.5rem' }}
+                  placeholder="25.00"
+                />
+              </div>
+            </div>
+
+            <button type="submit" disabled={loading} className="eb-btn">
+              {loading ? "Transmitting..." : "Submit Review"}
             </button>
-          </div>
-        </form>
-      </div>
+          </form>
+        </div>
+      )}
     </div>
   );
 }

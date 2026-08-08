@@ -46,16 +46,44 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     { name: 'Pipeline', path: '/dashboard/projects' },
     { name: 'Inventory & Swap', path: '/dashboard/inventory' },
     { name: 'CRM & Clients', path: '/dashboard/crm' },
-    { name: 'AI Brand Lab', path: '/dashboard/brand-lab' }
+    { name: 'AI Brand Lab', path: '/dashboard/brand-lab' },
+    { name: 'Product Sandbox', path: '/dashboard/product-sandbox' },
+    { name: 'Supply Chain Data', path: '/dashboard/product-sandbox/sourcing' },
+    { name: 'QMS & Compliance', path: '/dashboard/qms' }
   ];
 
   return (
-    <div style={{
+    <div className="dashboard-root" style={{
       minHeight: '100vh',
       display: 'flex',
     }}>
+      {/* Horological Gear Background Elements */}
+      <div className="gear-container">
+        {/* Large slow background gear */}
+        <svg className="gear gear-slow-cw" viewBox="0 0 200 200" style={{ width: '800px', height: '800px', top: '-10%', right: '-5%' }}>
+          <circle cx="100" cy="100" r="80" strokeDasharray="10 5" />
+          <circle cx="100" cy="100" r="70" />
+          <circle cx="100" cy="100" r="20" />
+          <path d="M100 20 L100 180 M20 100 L180 100 M43 43 L157 157 M43 157 L157 43" />
+        </svg>
+        {/* Interlocking medium gear */}
+        <svg className="gear gear-fast-ccw" viewBox="0 0 200 200" style={{ width: '400px', height: '400px', top: '40%', right: '25%' }}>
+          <circle cx="100" cy="100" r="80" strokeDasharray="5 5" />
+          <circle cx="100" cy="100" r="65" />
+          <circle cx="100" cy="100" r="15" />
+          <path d="M100 20 L100 180 M20 100 L180 100" />
+        </svg>
+        {/* Bottom left accent gear */}
+        <svg className="gear gear-slow-cw" viewBox="0 0 200 200" style={{ width: '600px', height: '600px', bottom: '-20%', left: '-10%' }}>
+          <circle cx="100" cy="100" r="90" strokeDasharray="15 5" />
+          <circle cx="100" cy="100" r="75" />
+          <circle cx="100" cy="100" r="30" />
+          <path d="M100 10 L100 190 M10 100 L190 100 M36 36 L164 164 M36 164 L164 36" />
+        </svg>
+      </div>
+
       {/* Global Sidebar */}
-      <aside style={{
+      <aside className="dashboard-sidebar" style={{
         width: '280px',
         background: 'rgba(12, 16, 24, 0.95)',
         borderRight: '1px solid var(--border-color)',
@@ -89,6 +117,29 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               </Link>
             );
           })}
+          <div style={{ paddingLeft: '1rem', borderLeft: '1px solid var(--border-color)' }}>
+            <Link href="/dashboard/product-sandbox/micro-factory" style={{ display: 'block', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+              Container 001 Blueprint
+            </Link>
+            <Link href="/dashboard/product-sandbox/container-002" style={{ display: 'block', color: 'var(--gold)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+              Container 002 Blueprint
+            </Link>
+            <Link href="/dashboard/product-sandbox/deployment" style={{ display: 'block', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+              Deployment Timeline
+            </Link>
+            <Link href="/dashboard/product-sandbox/master-manual" style={{ display: 'block', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+              Master Project Manual
+            </Link>
+            <Link href="/dashboard/product-sandbox/expansion" style={{ display: 'block', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+              Product Expansion Matrix
+            </Link>
+            <Link href="/dashboard/product-sandbox/formulations" style={{ display: 'block', color: 'var(--gold)', textDecoration: 'none', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+              Formulation Lab Profiles
+            </Link>
+            <Link href="/dashboard/product-sandbox/musk-pitch" style={{ display: 'block', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem' }}>
+              The Musk Pitch (UHI)
+            </Link>
+          </div>
         </nav>
         
         <div style={{ marginTop: 'auto', borderTop: '1px solid var(--border-color)', paddingTop: '1rem' }}>
@@ -116,7 +167,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       </aside>
 
       {/* Main Content Area */}
-      <main style={{ flex: 1, position: 'relative', overflowY: 'auto', maxHeight: '100vh' }}>
+      <main className="dashboard-main" style={{ flex: 1, position: 'relative', overflowY: 'auto', maxHeight: '100vh' }}>
         {children}
       </main>
     </div>

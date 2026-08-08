@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 325" width="5.5in" height="3.25in">
+  <defs>
+    <style>
+      .bg { fill: #111111; }
+      .gold { fill: #d4af37; }
+      .gold-stroke { stroke: #d4af37; fill: none; stroke-width: 1; }
+      .text-title { font-family: 'Times New Roman', serif; fill: #d4af37; text-anchor: middle; font-size: 14px; letter-spacing: 2px; }
+      .text-sub { font-family: 'Arial', sans-serif; fill: #ffffff; text-anchor: middle; font-size: 8px; letter-spacing: 1px; }
+      .text-tiny { font-family: 'Arial', sans-serif; fill: #888888; text-anchor: middle; font-size: 7px; letter-spacing: 0.5px; }
+      
+      .text-left-title { font-family: 'Times New Roman', serif; fill: #d4af37; font-size: 10px; letter-spacing: 1px; text-anchor: middle; }
+      .text-left-body { font-family: 'Arial', sans-serif; fill: #cccccc; font-size: 7.5px; line-height: 1.5; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- 1. CUT OUTLINE / BACKGROUND -->
+  <!-- Top Lid Circle -->
+  <circle cx="275" cy="75" r="75" class="bg" />
+  <!-- Tamper-Evident Neck Strip -->
+  <rect x="250" y="150" width="50" height="75" class="bg" />
+  <!-- Body Wrap Band -->
+  <rect x="0" y="225" width="550" height="100" class="bg" />
+
+  <!-- 2. TOP LID (CIRCLE) DESIGN -->
+  <!-- Gold inner ring -->
+  <circle cx="275" cy="75" r="68" class="gold-stroke" />
+  <!-- Text Elements -->
+  <text x="275" y="45" class="text-title" style="font-size: 18px;">✧</text>
+  <text x="275" y="70" class="text-title">TRILLIONAIRES</text>
+  <text x="275" y="90" class="text-sub">BESPOKE TOOTH POLISH</text>
+  <text x="275" y="110" class="text-tiny">1 OZ | 42G | ORGANIC</text>
+
+  <!-- 3. TAMPER-EVIDENT NECK STRIP -->
+  <!-- Tear lines / Perforation Guide (Cricut Score Line indicator) -->
+  <line x1="255" y1="180" x2="295" y2="180" stroke="#d4af37" stroke-width="1" stroke-dasharray="3 3" />
+  <!-- Vertical text on the strip -->
+  <text transform="translate(275, 202) rotate(-90)" class="text-tiny" style="fill:#d4af37; font-size:6px; letter-spacing: 2px;">SEALED FOR PURITY</text>
+  <text transform="translate(275, 165) rotate(-90)" class="text-tiny" style="fill:#d4af37; font-size:6px; letter-spacing: 2px;">SEALED FOR PURITY</text>
+
+  <!-- 4. BODY WRAP BAND (5.5" x 1.0") -->
+  <!-- Thin gold border around the wrap -->
+  <rect x="5" y="230" width="540" height="90" class="gold-stroke" />
+  
+  <!-- CENTER PANEL (Front of Jar, exactly under the neck) -->
+  <text x="275" y="255" class="text-title" style="font-size: 16px;">✧</text>
+  <text x="275" y="278" class="text-title">TRILLIONAIRES</text>
+  <text x="275" y="295" class="text-sub">THE FUTURE OF ORAL CARE</text>
+  <text x="275" y="310" class="text-tiny">HANDCRAFTED IN WASHINGTON</text>
+
+  <!-- LEFT PANEL (Anatomy / Ingredients) -->
+  <text x="135" y="250" class="text-left-title">THE ANATOMY OF A SMILE</text>
+  <text x="135" y="265" class="text-left-body"><tspan style="fill:#d4af37;">MCHA:</tspan> The Magic Enamel Builder</text>
+  <text x="135" y="278" class="text-left-body"><tspan style="fill:#d4af37;">French Green Clay:</tspan> The Gentle Polisher</text>
+  <text x="135" y="291" class="text-left-body"><tspan style="fill:#d4af37;">Organic Coconut Oil:</tspan> The Antimicrobial Binder</text>
+  <text x="135" y="304" class="text-left-body"><tspan style="fill:#d4af37;">Non-GMO Xylitol:</tspan> The Bacteria Starver</text>
+
+  <!-- RIGHT PANEL (Ritual / Instructions) -->
+  <text x="415" y="250" class="text-left-title">THE NIGHTLY RITUAL</text>
+  <text x="415" y="265" class="text-left-body"><tspan style="fill:#d4af37;">1.</tspan> Use the wooden spatula. Do not double dip!</text>
+  <text x="415" y="278" class="text-left-body"><tspan style="fill:#d4af37;">2.</tspan> Brush gently to polish the enamel.</text>
+  <text x="415" y="291" class="text-left-body"><tspan style="fill:#d4af37;">3.</tspan> Spit, but DO NOT RINSE with water.</text>
+  <text x="415" y="304" class="text-left-body"><tspan style="fill:#d4af37;">4.</tspan> Let the MCHA rebuild your enamel overnight.</text>
+
+</svg>

@@ -1,29 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&family=Marcellus&display=swap');
 
 :root {
-  /* Color Palette */
-  --bg-dark: #080a0e;
-  --bg-panel: rgba(12, 16, 24, 0.95);
-  --bg-card: rgba(12, 16, 24, 0.95);
-  --border-color: rgba(0, 240, 255, 0.25);
-  --border-glow: rgba(0, 240, 255, 0.5);
+  /* Color Palette - Trillionaires Luxury */
+  --bg-dark: #050505;
+  --bg-panel: rgba(10, 10, 10, 0.95);
+  --bg-card: rgba(15, 15, 15, 0.95);
+  --border-color: rgba(212, 175, 55, 0.2);
+  --border-glow: rgba(212, 175, 55, 0.4);
   
-  --cyan: #00f0ff;
-  --cyan-glow: rgba(0, 240, 255, 0.6);
-  --violet: #bd00ff;
-  --violet-glow: rgba(189, 0, 255, 0.6);
-  --green: #70e000;
-  --green-glow: rgba(112, 224, 0, 0.6);
-  --gold: #ffb700;
+  --cyan: #d4af37; /* Re-mapped to Gold for legacy overrides */
+  --cyan-glow: rgba(212, 175, 55, 0.3);
+  --violet: #b5952f;
+  --violet-glow: rgba(181, 149, 47, 0.3);
+  --green: #4caf50;
+  --green-glow: rgba(76, 175, 80, 0.3);
+  --gold: #d4af37;
   --white: #ffffff;
-  --text-primary: #e2e8f0;
-  --text-secondary: #94a3b8;
-  --text-muted: #475569;
+  --text-primary: #f2f2f2;
+  --text-secondary: #a3a3a3;
+  --text-muted: #666666;
   
-  --font-display: 'Orbitron', sans-serif;
-  --font-body: 'Rajdhani', sans-serif;
+  --font-display: 'Marcellus', serif;
+  --font-body: 'Jost', sans-serif;
+  --font-serif: 'Cormorant Garamond', serif;
   
-  --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .trillionaires-color-shift {
@@ -60,12 +61,9 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   background-image: 
-    linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(rgba(255, 183, 0, 0.02) 2px, transparent 2px),
-    linear-gradient(90deg, rgba(255, 183, 0, 0.02) 2px, transparent 2px);
-  background-size: 30px 30px, 30px 30px, 150px 150px, 150px 150px;
-  background-position: center top;
+    radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.05), transparent 70%);
+  background-size: 100% 100vh;
+  background-repeat: no-repeat;
   overflow-x: hidden;
 }
 
@@ -111,27 +109,27 @@ body {
   pointer-events: none;
 }
 
-/* Floating Light Orbs */
+/* Floating Light Orbs (Gold Theme) */
 .orb {
   position: fixed;
   width: 500px;
   height: 500px;
   border-radius: 50%;
   filter: blur(140px);
-  opacity: 0.15;
+  opacity: 0.1;
   z-index: -1;
   pointer-events: none;
   animation: float 20s ease-in-out infinite alternate;
 }
 
 .orb-cyan {
-  background: var(--cyan);
+  background: #d4af37;
   top: -10%;
   left: 10%;
 }
 
 .orb-violet {
-  background: var(--violet);
+  background: #fff;
   bottom: -10%;
   right: 10%;
   animation-delay: -10s;
@@ -144,6 +142,53 @@ body {
   100% {
     transform: translate(80px, 50px) scale(1.15);
   }
+}
+
+/* Horological / Steampunk Gear Animations */
+.gear-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.15;
+}
+
+.gear {
+  position: absolute;
+  transform-origin: center center;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 0.5;
+}
+
+.gear-slow-cw {
+  animation: spin-cw 120s linear infinite;
+}
+
+.gear-slow-ccw {
+  animation: spin-ccw 120s linear infinite;
+}
+
+.gear-fast-cw {
+  animation: spin-cw 40s linear infinite;
+}
+
+.gear-fast-ccw {
+  animation: spin-ccw 40s linear infinite;
+}
+
+@keyframes spin-cw {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-ccw {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
 }
 
 /* Scanline Effect */
@@ -173,6 +218,31 @@ body {
 @keyframes slow-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+@media print {
+  /* Hide the global dashboard sidebar when printing assets */
+  .dashboard-sidebar {
+    display: none !important;
+    width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  /* Reset the main content area to allow full page printing */
+  .dashboard-root {
+    display: block !important;
+  }
+  
+  .dashboard-main {
+    position: static !important; /* Extremely important so absolute positioned children break out of it */
+    overflow: visible !important;
+    max-height: none !important;
+    height: auto !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
 }
 
 /* App Header / Navigation */
@@ -332,14 +402,12 @@ section {
 .hero h1 {
   font-family: var(--font-display);
   font-size: 4rem;
-  font-weight: 900;
-  letter-spacing: -1px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
   line-height: 1.1;
   text-transform: uppercase;
   margin-bottom: 2rem;
-  background: linear-gradient(135deg, var(--white) 30%, var(--cyan) 70%, var(--violet));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--gold);
   max-width: 900px;
 }
 
@@ -357,11 +425,9 @@ section {
 }
 
 .hero-btn-primary {
-  background: linear-gradient(90deg, var(--cyan) 0%, var(--violet) 25%, #f72585 50%, var(--cyan) 75%, var(--violet) 100%);
-  background-size: 300% auto;
-  animation: colorShiftAnimBg 6s ease-in-out infinite alternate;
+  background: var(--gold);
   border: none;
-  color: var(--white);
+  color: var(--bg-dark);
   padding: 1rem 2.5rem;
   font-family: var(--font-display);
   font-size: 0.9rem;
@@ -370,28 +436,18 @@ section {
   cursor: pointer;
   transition: var(--transition);
   text-transform: uppercase;
-  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3), 0 0 15px rgba(189, 0, 255, 0.3);
   text-decoration: none;
-  text-shadow: 0 0 5px rgba(0,0,0,0.8);
-  clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
-}
-
-@keyframes colorShiftAnimBg {
-  0% { background-position: 0% center; }
-  50% { background-position: 50% center; }
-  100% { background-position: 100% center; }
 }
 
 .hero-btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 30px rgba(0, 240, 255, 0.5), 0 6px 30px rgba(189, 0, 255, 0.5);
-  animation-duration: 3s; /* Speeds up animation on hover for a dynamic feel */
+  box-shadow: 0 6px 30px rgba(212, 175, 55, 0.4);
 }
 
 .hero-btn-secondary {
   background: transparent;
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
+  border: 1px solid var(--gold);
+  color: var(--gold);
   padding: 1rem 2.5rem;
   font-family: var(--font-display);
   font-size: 0.9rem;
@@ -401,12 +457,10 @@ section {
   transition: var(--transition);
   text-transform: uppercase;
   text-decoration: none;
-  clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
 }
 
 .hero-btn-secondary:hover {
-  border-color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(212, 175, 55, 0.05);
 }
 
 /* Glassmorphism Panel styles */
