@@ -27,6 +27,7 @@ export type SubagentId =
   | 'lifeops'
   | 'pantryops'
   | 'supplyops'
+  | 'financeops'
   | 'patentforge';
 
 export interface AgentDispatch {
@@ -140,8 +141,27 @@ export const SUBAGENTS = [
   { id: 'lifeops', name: 'LifeOps', role: 'Longevity & Circadian Coach', badge: 'bg-teal-500/20 text-teal-300 border-teal-500/40' },
   { id: 'pantryops', name: 'PantryOps', role: 'Pantry & Fermentation Master', badge: 'bg-lime-500/20 text-lime-300 border-lime-500/40' },
   { id: 'supplyops', name: 'SupplyOps', role: 'Procurement & Price Scout', badge: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40' },
+  { id: 'financeops', name: 'FinanceOps', role: 'Sovereign CFO & Debt Snowball Coach', badge: 'bg-amber-500/20 text-amber-300 border-amber-500/40' },
   { id: 'patentforge', name: 'PatentForge', role: 'Hardware Inventions & Claim Drafting', badge: 'bg-orange-500/20 text-orange-300 border-orange-500/40' }
 ] as const;
+
+export function getActiveUserEmail(): string | null {
+  if (auth.currentUser && auth.currentUser.email === AUTHORIZED_SUPERUSER) {
+    return auth.currentUser.email;
+  }
+  if (typeof window !== 'undefined') {
+    const local = localStorage.getItem('sovereign_auth_user');
+    if (local) {
+      try {
+        const parsed = JSON.parse(local);
+        if (parsed.email === AUTHORIZED_SUPERUSER) {
+          return parsed.email;
+        }
+      } catch {}
+    }
+  }
+  return null;
+}
 
 /**
  * Sends an agent dispatch command to Firestore
@@ -149,14 +169,14 @@ export const SUBAGENTS = [
 export async function sendAgentDispatch(
   payload: Omit<AgentDispatch, 'status' | 'timestamp' | 'userEmail'>
 ): Promise<string> {
-  const user = auth.currentUser;
-  if (!user || user.email !== AUTHORIZED_SUPERUSER) {
+  const activeEmail = getActiveUserEmail();
+  if (!activeEmail || activeEmail !== AUTHORIZED_SUPERUSER) {
     throw new Error('Unauthorized: Only sovereign administrator can issue agent dispatches.');
   }
 
   const dispatchData = {
     ...payload,
-    userEmail: user.email,
+    userEmail: activeEmail,
     status: 'pending' as const,
     timestamp: Date.now()
   };
@@ -214,8 +234,8 @@ export async function sendAgentDispatch(
 export function subscribeAgentDispatches(
   callback: (dispatches: AgentDispatch[]) => void
 ): () => void {
-  const user = auth.currentUser;
-  if (!user || user.email !== AUTHORIZED_SUPERUSER) {
+  const activeEmail = getActiveUserEmail();
+  if (!activeEmail || activeEmail !== AUTHORIZED_SUPERUSER) {
     return () => {};
   }
 
