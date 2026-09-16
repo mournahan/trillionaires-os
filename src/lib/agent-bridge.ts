@@ -25,6 +25,8 @@ export type SubagentId =
   | 'sentry'
   | 'localops'
   | 'lifeops'
+  | 'pantryops'
+  | 'supplyops'
   | 'patentforge';
 
 export interface AgentDispatch {
@@ -135,7 +137,9 @@ export const SUBAGENTS = [
   { id: 'inspector', name: 'Inspector', role: 'Verification & QA Engineer', badge: 'bg-amber-500/20 text-amber-300 border-amber-500/40' },
   { id: 'sentry', name: 'Sentry', role: 'Cybersecurity & Perimeter Defense', badge: 'bg-rose-500/20 text-rose-300 border-rose-500/40' },
   { id: 'localops', name: 'LocalOps', role: 'Offline RTX 4060 Ti Token Arbitrage', badge: 'bg-purple-500/20 text-purple-300 border-purple-500/40' },
-  { id: 'lifeops', name: 'LifeOps', role: 'Longevity, Fermentation & Health Coach', badge: 'bg-teal-500/20 text-teal-300 border-teal-500/40' },
+  { id: 'lifeops', name: 'LifeOps', role: 'Longevity & Circadian Coach', badge: 'bg-teal-500/20 text-teal-300 border-teal-500/40' },
+  { id: 'pantryops', name: 'PantryOps', role: 'Pantry & Fermentation Master', badge: 'bg-lime-500/20 text-lime-300 border-lime-500/40' },
+  { id: 'supplyops', name: 'SupplyOps', role: 'Procurement & Price Scout', badge: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40' },
   { id: 'patentforge', name: 'PatentForge', role: 'Hardware Inventions & Claim Drafting', badge: 'bg-orange-500/20 text-orange-300 border-orange-500/40' }
 ] as const;
 

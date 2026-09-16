@@ -59,9 +59,19 @@ export async function POST(req: Request) {
             `Local models standing by (qwen2.5-coder:14b). Ready for offline document triage and batch data parsing.`;
           break;
         case 'lifeops':
-          reply = `🌿 **[LifeOps Longevity]**:\n` +
-            `Circadian and nutritional protocol check for: "${prompt}".\n` +
-            `Adhering to strict gluten-free, pescatarian guidelines with homemade fermented cultures.`;
+          reply = `🌿 **[LifeOps Longevity Coach]**:\n` +
+            `Biometric, circadian, and acoustic protocol check for: "${prompt}".\n` +
+            `Monitoring HRV, neuro-regulation frequencies, and cellular longevity markers.`;
+          break;
+        case 'pantryops':
+          reply = `🍲 **[PantryOps Fermentation Master]**:\n` +
+            `Scratch kitchen & pantry check for: "${prompt}".\n` +
+            `Adhering to strict gluten-free, pescatarian guidelines. Batch schedules active for fresh soy milk, Epsom-salt curdled tofu, and live sauerkraut.`;
+          break;
+        case 'supplyops':
+          reply = `📦 **[SupplyOps Procurement Scout]**:\n` +
+            `Price-arbitrage sweep initiated for: "${prompt}".\n` +
+            `Scanning wholesale bulk tiers vs retail markups for homestead, shop, Pine Creek Pack, and Trillionaires LLC formulations.`;
           break;
         case 'patentforge':
           reply = `⚙️ **[PatentForge Inventions]**:\n` +
