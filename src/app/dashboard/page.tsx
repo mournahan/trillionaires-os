@@ -84,11 +84,11 @@ export default function Dashboard() {
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                     <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: 'var(--violet)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.7rem', fontWeight: 'bold' }}>AI</div>
                     <strong style={{ fontSize: '0.9rem', color: 'var(--white)' }}>{item.author}</strong>
-                    <span style={{ fontSize: '0.8rem', color: 'var(--cyan)' }}>{item.category}</span>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--cyan)' }}>{item.category || 'Update'}</span>
                   </div>
-                  <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>{new Date(item.timestamp).toLocaleDateString()}</span>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>{item.timestamp ? new Date(item.timestamp).toLocaleDateString() : ''}</span>
                 </div>
-                <p style={{ fontSize: '0.9rem', color: '#d1d5db', lineHeight: '1.5' }} dangerouslySetInnerHTML={{ __html: item.content.replace(/\*\*(.*?)\*\*/g, '<strong style="color:var(--white)">$1</strong>') }}></p>
+                <p style={{ fontSize: '0.9rem', color: '#d1d5db', lineHeight: '1.5' }} dangerouslySetInnerHTML={{ __html: (item.content || item.message || '').replace(/\*\*(.*?)\*\*/g, '<strong style="color:var(--white)">$1</strong>') }}></p>
               </div>
             ))}
           </div>
