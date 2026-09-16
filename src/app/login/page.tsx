@@ -105,7 +105,9 @@ export default function Login() {
         userData = { ...userData, hasInventorAccess: true, hasClientAccess: true, isSuperUser: true };
       }
 
-      if (userData.hasInventorAccess) {
+      if (isSuperUser) {
+        router.push('/');
+      } else if (userData.hasInventorAccess) {
         router.push('/launchpad');
       } else {
         setError('Your account exists, but you do not have Inventor OS access enabled yet.');
@@ -122,7 +124,7 @@ export default function Login() {
       await setDoc(userDocRef, newUserDoc);
       
       if (isSuperUser) {
-        router.push('/launchpad');
+        router.push('/');
       } else {
         setError('Account synchronized. Please request Inventor OS access.');
       }
